@@ -1,4 +1,4 @@
-name: Laravel
+name: DAM Sever
 
 on:
   pull_request:
