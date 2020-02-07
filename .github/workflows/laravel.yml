@@ -2,14 +2,12 @@ name: Laravel
 
 on:
   pull_request:
-    branches: [master]
+    branches: [develop]
     types: [opened, synchronize, closed]
 jobs:
   deploy:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: develop
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: vendor/bin/phpunit
