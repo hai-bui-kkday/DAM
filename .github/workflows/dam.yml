@@ -1,0 +1,13 @@
+name: DAM Sever
+
+on:
+  pull_request:
+    branches: [develop]
+    types: [opened, synchronize, closed]
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v2
+    - name: Execute tests (Unit and Feature tests) via PHPUnit
+      run: vendor/bin/phpunit
