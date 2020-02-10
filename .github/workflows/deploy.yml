@@ -1,6 +1,6 @@
-name: Deploy Sever
+name: SIT Sever
 on:
-  push:
+  pull_request:
     branches: develop
 jobs:
   deploy:
