@@ -1,12 +1,18 @@
-name: SIT Sever
+name: SIT Server
 on:
   pull_request:
     branches: develop
+  # schedule:
+  #   - cron:  '0 * * * *'
 jobs:
   deploy:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
+    - name: Set env to staging
+      if: endsWith(github.ref, '/develop')
+      run: |
+        echo "::set-env name=APP_NAME::'Working Now'"
     - name: Get composer cache directory
       id: composer-cache
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"
