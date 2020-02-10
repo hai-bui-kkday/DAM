@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: self-hosted
     env:
-      APP_NAME: Git Actions
+      APP_NAME: ${{ secrets.APP_NAME }}
     steps:
     - uses: actions/checkout@v2
     - name: Get composer cache directory
