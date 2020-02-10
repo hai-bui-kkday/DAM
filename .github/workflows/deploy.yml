@@ -1,13 +1,12 @@
 name: Deploy Sever
 on:
-  pull_request:
-    branches: [develop]
-    types: [opened, synchronize, closed]
+  push:
+    branches: develop
 jobs:
   deploy:
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v2 
+    - uses: actions/checkout@v2
     - name: Get composer cache directory
       id: composer-cache
       run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -22,7 +21,7 @@ jobs:
     # - name: Install Composer dependencies
     #   run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
     - name: Install Composer dependencies
-      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --optimize-autoloader
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
     - name: Prepare the application
