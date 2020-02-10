@@ -39,7 +39,7 @@ jobs:
       run: vendor/bin/phpunit
     - name: Send Slack notification
       uses: 8398a7/action-slack@v2
-      if: failure()
+      # if: failure()
       with:
           status: ${{ job.status }}
           author_name: ${{ github.actor }}
