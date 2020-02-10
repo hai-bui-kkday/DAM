@@ -1,10 +1,14 @@
-name: SIT Sever
+name: SIT Server
 on:
   pull_request:
     branches: develop
+  # schedule:
+  #   - cron:  '0 * * * *'
 jobs:
   deploy:
     runs-on: self-hosted
+    env:
+      APP_NAME: Git Actions
     steps:
     - uses: actions/checkout@v2
     - name: Get composer cache directory
@@ -26,7 +30,7 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Prepare the application
       run: |
-        php -r "file_exists('.env') || copy('.env.example', '.env');"
+        php -r "file_exists('.env') || copy('.env.ci', '.env');"
         php artisan key:generate
     - name: Clear Config
       run: php artisan config:clear
