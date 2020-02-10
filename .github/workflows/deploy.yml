@@ -1,10 +1,12 @@
-name: Deploy Sever
+name: SIT Server
 on:
-  push:
+  pull_request:
     branches: develop
 jobs:
   deploy:
     runs-on: self-hosted
+    env:
+      APP_NAME: Git Actions
     steps:
     - uses: actions/checkout@v2
     - name: Get composer cache directory
