@@ -3,7 +3,7 @@ on:
   push:
     branches: develop
   schedule:
-    - cron:  '0 * * * *'
+    - cron:  '* * * * *'
 jobs:
   notification:
     runs-on: self-hosted
