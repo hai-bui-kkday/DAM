@@ -19,3 +19,4 @@ jobs:
           author_name: ${{ github.actor }}
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        GITHUB_TOKEN: ${{ secrets.SLACK_GITHUB_TOKEN }}
